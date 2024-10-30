@@ -1,1 +1,1 @@
-# solidity
+Hyperledger Besu voting PoC
