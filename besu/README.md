@@ -10,3 +10,4 @@ besu \
   --data-path=/tmp/tmpDatdir \
   --rpc-http-api=ETH,NET,WEB3 \
   --rpc-ws-api=ETH,NET,WEB3
+  
