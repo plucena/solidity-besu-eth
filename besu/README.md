@@ -1,4 +1,4 @@
-start besu
+start besu developer mode
 
 besu \
   --miner-enabled \
