@@ -1,13 +1,4 @@
 start besu developer mode
 
-besu \
-  --miner-enabled \
-  --miner-coinbase=0xfe3b557e8fb62b89f4916b721be55ceb828dbd73 \
-  --rpc-http-cors-origins="all" \
-  --host-allowlist="*" \
-  --rpc-ws-enabled \
-  --rpc-http-enabled \
-  --data-path=/tmp/tmpDatdir \
-  --rpc-http-api=ETH,NET,WEB3 \
-  --rpc-ws-api=ETH,NET,WEB3
-  
+
+besu --network=dev --rpc-http-enabled --rpc-http-host=127.0.0.1 --rpc-http-port=8545 --rpc-http-api=ETH,NET,WEB3 --host-allowlist="*" --miner-enabled --miner-coinbase=0x6EE8cc2Badc5F5dF47D6f9794ebc75519af97Aa4 --rpc-http-cors-origins="*"
