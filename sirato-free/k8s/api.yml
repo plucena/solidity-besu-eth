@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chainlens-api-deployment
+spec:
+  selector:
+    matchLabels:
+      run: chainlens-api
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: chainlens-api
+    spec:
+      containers:
+      - name: chainlens-api
+        image: web3labs/epirus-free-api:latest
+        ports:
+        - containerPort: 8090
+        env:
+        - name: MONGO_CLIENT_URI
+          value: mongodb://chainlens-db:27017
+        - name: MONGO_DB_NAME
+          value: "epirus"
+        - name: MONGO_CREATE_INDICES
+          value: "true"
+        - name: NODE_ENDPOINT
+          value: {{NODE_ENDPOINT}}
+        - name: REINDEX_ENDPOINT
+          value: http://chainlens-ingestion/reindex
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chainlens-api
+  labels:
+    run: chainlens-api
+spec:
+  ports:
+  - port: 8090
+    protocol: TCP
+  selector:
+    run: chainlens-api

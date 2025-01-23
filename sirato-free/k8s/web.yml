@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: chainlens-web
+  name: chainlens-web-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: chainlens-web
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        run: chainlens-web
+    spec:
+      containers:
+        - name: chainlens-web
+          env:
+            - name: API_URL
+              value: /api
+          image: web3labs/epirus-free-web:latest
+          ports:
+            - containerPort: 3000
+          resources: {}
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chainlens-web
+  labels:
+    run: chainlens-web
+spec:
+  ports:
+  - port: 3000
+    protocol: TCP
+  selector:
+    run: chainlens-web

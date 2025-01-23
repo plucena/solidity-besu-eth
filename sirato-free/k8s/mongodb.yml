@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chainlens-db-deployment
+spec:
+  selector:
+    matchLabels:
+      run: chainlens-db
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: chainlens-db
+    spec:
+      containers:
+      - name: chainlens-db
+        image: mongo:5.0.8
+        ports:
+        - containerPort: 27017
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chainlens-db
+  labels:
+    run: chainlens-db
+spec:
+  ports:
+  - port: 27017
+    protocol: TCP
+  selector:
+    run: chainlens-db

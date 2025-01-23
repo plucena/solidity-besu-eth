@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: chainlens-ingestion
+  name: chainlens-ingestion
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: chainlens-ingestion
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        run: chainlens-ingestion
+    spec:
+      containers:
+        - env:
+            - name: MONGO_CLIENT_URI
+              value: mongodb://chainlens-db:27017
+            - name: MONGO_DB_NAME
+              value: epirus
+            - name: NODE_ENDPOINT
+              value: {{NODE_ENDPOINT}}
+            - name: DISPATCHER_RATE
+              value: "{{DISPATCHER_RATE}}"
+          image: web3labs/epirus-free-ingestion:latest
+          name: ingestion
+          resources: {}
+      restartPolicy: Always
