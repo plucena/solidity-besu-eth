@@ -1,3 +1,5 @@
+brew install besu
+
 start besu developer mode
 
 
