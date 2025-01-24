@@ -1,6 +1,8 @@
 Hyperledger Besu voting PoC
 
-besu -- besu network
+besu 
+
+        --- besu network
 
 hardhat 
 
@@ -8,4 +10,6 @@ hardhat
 
         --- smart contracts interaction scripts
 
-sirato-free -- blockchain explorer 
+sirato-free 
+
+        --- blockchain explorer 
