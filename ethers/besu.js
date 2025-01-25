@@ -1,6 +1,5 @@
 import { ethers } from "ethers";
 
-// Replace with your Besu RPC endpoint
 const besuRpcUrl = "http://localhost:8545"; 
 
 async function connectToBesu() {
