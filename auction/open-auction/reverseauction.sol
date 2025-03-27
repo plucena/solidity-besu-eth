@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
+// SHOULD INCLUDE A WHITE LIST OF ALLOWED WALLET ADDRESS TO BID, LEFT TO MAKE CODE CLEAR
+
 contract ReverseAuction {
     address public owner;
     address private lowestBidder;
